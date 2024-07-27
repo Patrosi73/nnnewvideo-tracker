@@ -1,5 +1,6 @@
 .env
 config.json
-data/
+data/*
 tmp*
 temp*
+testconfig.json

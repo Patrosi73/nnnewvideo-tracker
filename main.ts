@@ -3,7 +3,7 @@ import { post } from 'https://deno.land/x/dishooks@v1.1.0/webhook.ts'
 
 async function reportError(error: string) {
   await post(config.debugWebhook, {
-    content: '<@787042660724113408> **ERROR IN TTTRACKER**:\n```\n' +
+    content: '<@aaa> **ERROR IN TTTRACKER**:\n```\n' +
       error + '\n```',
   })
 }

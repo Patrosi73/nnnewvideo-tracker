@@ -7,15 +7,8 @@ type playlistEntryData = playlistData['entries'][number]
 export type change =
   & { video: Video }
   & ({
-    type: 'newVideo' | 'removedVideo' | 'relistedVideo'
-  } | {
-    type: 'lengthChange'
-    oldDuration: number
-    oldHumanDuration: string
-  } | {
-    type: 'titleChange'
-    oldTitle: string
-  })
+    type: 'newVideo'
+  } )
 
 export class VideoMap extends Map<string, Video> {
   constructor(public listID: string) {
@@ -36,15 +29,6 @@ export class VideoMap extends Map<string, Video> {
       this.set(video.id, newVideo)
       changes.push(newVideo.setNew())
     }
-    const removedVideos = [...this.values()].filter((video) =>
-      !publicVideos.find((entry) => entry.id === video.data.id)
-    )
-    for (const video of removedVideos) {
-      const newData = Video.invidiousVideoToData(await videoData(video.data.id))
-      const updates = video.update(newData)
-      if (updates.length) changes.push(...updates)
-    }
-
     return changes
   }
 

@@ -1,8 +1,9 @@
 import config from './config.json' with { type: 'json' }
-const disableArchive = false
+const disableArchive = true
+const disableArchive2 = true
 
 export async function archiveURL(url: string) {
-  if (disableArchive) return console.log('pretend to archive url', url)
+  if (disableArchive2) return console.log('pretend to archive url', url)
   const response = await fetch('https://web.archive.org/save', {
     method: 'POST',
     headers: {
