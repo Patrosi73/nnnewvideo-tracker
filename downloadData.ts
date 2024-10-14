@@ -30,9 +30,7 @@ const instancesPromise = (async () => {
     .filter(([_domain, data]) =>
       data.api &&
       data.type === 'https' &&
-      data.monitor.statusClass === 'success' &&
-      data.region === 'US' &&
-      Number(data.monitor['30dRatio'].ratio) > 97
+      data.region === 'US'
     )
     .map(([_domain, data]) => data.uri)
   return filteredInstances
