@@ -49,8 +49,6 @@ export async function getEmbed(change: change): Promise<Embed | null> {
       text: 'Running modified tttakedown-tracker',
     },
   }
-  const archiveUrl = await getYouTubeArchives(change.video.data.id) ??
-    `https://archive.org/details/youtube-${change.video.data.id}`
   
   return {
     ...basicDetails,
